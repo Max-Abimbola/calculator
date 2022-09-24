@@ -4,7 +4,6 @@
 #Program the buttons
 
 from audioop import mul
-from lib2to3.pgen2.token import MINUS
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
