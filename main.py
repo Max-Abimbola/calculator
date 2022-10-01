@@ -1,7 +1,3 @@
-#Function that creates the window DONE
-#Create buttons
-#Create the text display
-#Program the buttons
 
 from audioop import mul
 import tkinter as tk
@@ -10,7 +6,7 @@ from tkinter import ttk
 from turtle import window_height, window_width
 from math import *
 
-
+#main window function
 def create_window():
     root = tk.Tk()
 
@@ -23,10 +19,11 @@ def create_window():
     root.geometry("430x560")
 
     root.configure(bg="#C79393")
-    #Creating display
+
 
     root.resizable(False,False)
 
+    #gets the dimensions of the screen so calculator can be centered on screen
     windowWidth = root.winfo_reqwidth()
     windowHeight = root.winfo_reqheight()
     print("Width",windowWidth,"Height",windowHeight)
@@ -38,7 +35,7 @@ def create_window():
     # Positions the window in the center of the page.
     root.geometry("+{}+{}".format(positionRight, positionDown))
 
-
+    # "wrapper" that holds the display onto which numbers will be entered
     display_frame = Frame(root,width=420,height=72)
     display_frame.pack()
 
@@ -50,10 +47,11 @@ def create_window():
 
     
 
-    #Creating buttons
+    # Button "wrapper" that holds buttons so that they can be organised into specific location on window
     button_frame = Frame(root,width=400,height=428, bg="#C79393")
     button_frame.pack()
 
+    # Creation of all the buttons that when pressed display the shown symbol onto the screen
     seven = Button(button_frame,text="7",command=lambda:pushButton("7"))
     seven.place(x=0, y=0,height=107, width=100)
 
@@ -109,15 +107,18 @@ def create_window():
 
     root.mainloop()
 
+# function that puts symbol onto screen when button is pressed
 def pushButton(symbol):
     display.insert(len(display.get()),symbol)
 
+# function that evaluates the expression that has been created on screen by the user and displays it onto the screen
 def evaluate():
     current_screen = display.get()
     evaluation = eval(current_screen)
     display.delete(0,"end")
     display.insert(0,evaluation)
     
+# Ffnction that when called clears the calculator screen
 def clsc():
     display.delete(0,"end")
 
