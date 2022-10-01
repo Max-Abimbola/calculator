@@ -1,9 +1,7 @@
-
-from audioop import mul
+import time
 import tkinter as tk
 from tkinter import *
-from tkinter import ttk
-from turtle import window_height, window_width
+
 from math import *
 
 #main window function
@@ -111,16 +109,23 @@ def create_window():
 def pushButton(symbol):
     display.insert(len(display.get()),symbol)
 
-# function that evaluates the expression that has been created on screen by the user and displays it onto the screen
-def evaluate():
-    current_screen = display.get()
-    evaluation = eval(current_screen)
-    display.delete(0,"end")
-    display.insert(0,evaluation)
-    
+
 # Ffnction that when called clears the calculator screen
 def clsc():
     display.delete(0,"end")
+
+# function that evaluates the expression that has been created on screen by the user and displays it onto the screen
+def evaluate():
+    try:
+        current_screen = display.get()
+        evaluation = eval(current_screen)
+        display.delete(0,"end")
+        display.insert(0,evaluation)
+    except:
+        clsc()
+        display.insert(0,"Inval Exp")
+    
+
 
 
     
